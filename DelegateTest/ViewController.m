@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "TestView.h"
 
-@interface ViewController ()
+@interface ViewController () <TestViewDelegate>
 
 @end
 
@@ -16,12 +17,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    TestView *myTextView = [[TestView alloc]init];
+    myTextView.dataSource = self;
+    [myTextView setTestViewDataSource];
+
+    [self.view addSubview:myTextView];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (CGRect)setTestViewFrame:(TestView *)testview {
+
+    return CGRectMake(0, 0, self.view.bounds.size.width, 500);
+
+}
+
+- (UIColor *)setTestViewColor:(TestView *)testview {
+
+    return [UIColor blueColor];
+
 }
 
 @end
