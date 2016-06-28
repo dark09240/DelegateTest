@@ -19,7 +19,7 @@
 
 @interface TestView : UIView
 
-@property (nonatomic) id<TestViewDelegate> dataSource;
+@property (weak, nonatomic) id<TestViewDelegate> dataSource;
 
 - (void)setTestViewDataSource;
 
